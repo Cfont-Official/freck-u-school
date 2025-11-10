@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PrivateSearch (Proxy)</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="brand">PrivateSearch</div>
+      <div class="desc">DuckDuckGo proxied & frameable — SafeSearch defaulted (but adjustable)</div>
+    </header>
+
+    <section class="controls">
+      <form id="searchForm">
+        <input id="q" name="q" type="search" placeholder="Search DuckDuckGo..." autofocus>
+        <select id="safe" name="safe">
+          <option value="off">Safe: Off</option>
+          <option value="moderate" selected>Safe: Moderate</option>
+          <option value="strict">Safe: Strict</option>
+        </select>
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
+    <section class="viewer">
+      <iframe id="frame" src="/ddg/" title="Search results"></iframe>
+    </section>
+
+    <footer class="note">
+      <small>Proxied pages are sanitized and scripts removed. This is not the official DuckDuckGo website.</small>
+    </footer>
+  </main>
+
+<script>
+const form = document.getElementById('searchForm');
+const frame = document.getElementById('frame');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const q = encodeURIComponent(document.getElementById('q').value || "");
+  const safe = document.getElementById('safe').value || "moderate";
+  // load proxied ddg with desired safe param
+  // use ddg search path: /ddg/?q=...&safe=...
+  const url = `/ddg/?q=${q}&safe=${safe}`;
+  frame.src = url;
+});
+</script>
+</body>
+</html>
