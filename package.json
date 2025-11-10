@@ -1,21 +1,16 @@
 {
-  "name": "ddg-iframe-proxy",
+  "name": "iframe-proxy",
   "version": "1.0.0",
-  "description": "DuckDuckGo reverse proxy for framing with SafeSearch controls (Render-ready)",
   "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "engines": {
-    "node": ">=18"
-  },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.12",
     "express": "^4.19.2",
-    "express-rate-limit": "^7.3.0",
-    "helmet": "^7.1.0",
-    "node-fetch": "^3.3.2",
-    "sanitize-html": "^2.11.0"
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=18 <=24"
   }
 }
