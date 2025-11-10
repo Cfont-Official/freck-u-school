@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ddg-iframe-proxy
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DEFAULT_SAFE
+        value: moderate   # off, moderate, strict
